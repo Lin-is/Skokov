@@ -1,9 +1,9 @@
 <template>
   <article class="newsArticle__container">
     <header class="article__header">
-      <img src="/img/article/backgr/art1.jpg" alt="article image" class="article__image">
+      <img :src="article.photo" alt="article image" class="article__image">
       <div class="article-header__titleContainer">
-        <h1 class="article__title">Why financial institutions need a new IT model</h1>
+        <h1 class="article__title">{{article.title}}</h1>
         <hr>
       </div>
     </header>
@@ -24,7 +24,7 @@
     <p class="article__commentsCounter">{{comments.length}} comments</p>
     <hr>
     <div class="article__addCommentArea">
-      <textarea type="text" class="article__commentsTextarea" placeholder="Your comment"></textarea>
+      <textarea class="article__commentsTextarea" placeholder="Your comment"></textarea>
       <button class="article__submitCommentBtn">submit comment</button>
     </div>
     <div class="article__commentsContainer">
@@ -37,6 +37,7 @@
 
 <script>
 import commentsTree from '@/components/CommentsTree.vue'
+import newsMethods from '@/data/news'
 
 export default {
   data () {
@@ -92,7 +93,8 @@ export default {
     }
   },
   mounted () {
-    this.id = this.$route.params
+    this.id = this.$route.params.id
+    this.article = newsMethods.findNewsById(this.id + '')
   },
   components: {
     commentsTree

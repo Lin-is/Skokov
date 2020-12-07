@@ -42,6 +42,11 @@ $inputsPlaceholder: rgb(175, 175, 175);
   flex-wrap: nowrap;
   width: 900px;
   height: 300px;
+
+  .news-card__photo {
+    width: 600px;
+    height: 300px;
+  }
 }
 
 .news__card_odd .news-card__infoContainer {
@@ -64,7 +69,7 @@ $inputsPlaceholder: rgb(175, 175, 175);
 
 .news__card_aside {
   position: absolute;
-  right: 0px;
+  right: 200px;
   width: 300px;
   height: 600px;
   flex-direction: row;
@@ -80,6 +85,11 @@ $inputsPlaceholder: rgb(175, 175, 175);
       top: -12px;
     }
   }
+
+  .news-card__photo {
+    width: 300px;
+    height: 300px;
+  }
 }
 
 .news-card__title {
@@ -88,6 +98,7 @@ $inputsPlaceholder: rgb(175, 175, 175);
   font-size: 20px;
   line-height: 26px;
   margin: 0;
+  text-decoration: none;
   text-transform: uppercase;
   cursor: pointer;
   

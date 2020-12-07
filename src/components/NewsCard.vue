@@ -2,7 +2,7 @@
   <div class="section__card news__card" :class="calcNewsCardClass(index + 1)" :style="createStyle(index + 1)">
     <img :src="newsCardInfo.photo" alt="news photo" class="section-card__photo news-card__photo">
     <div class="section-card__infoContainer news-card__infoContainer">
-      <a class="section-card__title news-card__title">{{ newsCardInfo.title }}</a>
+      <router-link :to="articlePath" class="section-card__title news-card__title">{{ newsCardInfo.title }}</router-link>
       <hr/>
       <p class="section-card__text news-card__text">{{ newsCardInfo.text }}</p>
       <p class="section-card__date news-card__date">{{ newsCardInfo.date }}</p>
@@ -20,6 +20,11 @@ export default {
     index: {
       type: Number,
       required: true
+    }
+  },
+  computed: {
+    articlePath () {
+      return '/article/' + this.newsCardInfo.id
     }
   },
   methods: {

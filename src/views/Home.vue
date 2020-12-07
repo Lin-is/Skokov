@@ -36,7 +36,7 @@
           <h3 class="about-item__title about-clients__title">our clients</h3>
           <hr/>
           <div class="about-item__clientList about-clients__clientList">
-            <img v-for="(client, index) in clients" :key="index" :src="client.logo" :alt="client.name + '-logo'" class="about-item__clientLogo about-clients__clientLogo">
+            <Carousel :clients="clients"/>
           </div>
         </section>
 
@@ -99,13 +99,16 @@
 
 <script>
 import NewsCard from '@/components/NewsCard.vue'
+import Carousel from '@/components/Carousel.vue'
 import allNews from '@/data/allNews.json'
+import clients from '@/data/clients.json'
 
 export default {
   name: 'Home, Social',
   data () {
     return {
       allNews: [],
+      clients: [],
       servItems: [
         {
           img: './img/main/services/PerformanceImprovement.png',
@@ -147,32 +150,6 @@ export default {
           img: './img/main/services/ResultsDelivery.png',
           title: 'results delivery',
           description: 'Predicting, measuring and managing risk associated with change management'
-        }
-      ],
-      clients: [
-        {
-          name: 'Oracle',
-          logo: './img/main/clients/oracle.jpg'
-        },
-        {
-          name: 'Sony',
-          logo: './img/main/clients/sony.jpg'
-        },
-        {
-          name: 'SanDisk',
-          logo: './img/main/clients/sanDisk.jpg'
-        },
-        {
-          name: 'McAfee',
-          logo: './img/main/clients/mcAfee.jpg'
-        },
-        {
-          name: 'Netflix',
-          logo: './img/main/clients/netflix.jpg'
-        },
-        {
-          name: 'SAP',
-          logo: './img/main/clients/sap.jpg'
         }
       ],
       teamMembers: [
@@ -258,6 +235,7 @@ export default {
   },
   mounted () {
     this.getAllNews(allNews)
+    this.clients = clients
   },
   methods: {
     getAllNews (allNews) {
@@ -265,7 +243,7 @@ export default {
     }
   },
   components: {
-    NewsCard
+    NewsCard, Carousel
   }
 }
 </script>
