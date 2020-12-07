@@ -1,18 +1,25 @@
 <template>
-  <Home/>
+  <component :is="layout">
+  </component>
 </template>
 
 <script>
-import Home from './views/Home.vue'
+import MainLayout from './layouts/MainLayout.vue'
+import NewsLayout from './layouts/NewsLayout.vue'
 
 export default {
   components: {
-    Home
+    MainLayout, NewsLayout
+  },
+  computed: {
+    layout () {
+      return `${this.$route.meta.layout || 'main'}-layout`
+    }
   }
 }
 </script>
 
 <style lang="scss">
-  @import './assets/styles/main.scss';
-  @import '~font-awesome/css/font-awesome.min.css'
+  @import './assets/styles/index.scss';
+  @import '~font-awesome/css/font-awesome.min.css';
 </style>

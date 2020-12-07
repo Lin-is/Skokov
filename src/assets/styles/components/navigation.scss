@@ -4,6 +4,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: transparent;
+  z-index: 100;
 
   .logo {
     color: #fe504f;
@@ -12,6 +13,7 @@
     font-weight: bold;
     font-size: 32px;
     letter-spacing: -0.04em;
+    z-index: 100;
   } 
 }
 
@@ -25,6 +27,7 @@
   list-style-type: none;
   margin-right: 50px;
   text-transform: uppercase;
+  z-index: 100;
   
   a {
     text-decoration: none;

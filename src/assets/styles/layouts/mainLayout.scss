@@ -1,0 +1,101 @@
+$titleBlack: rgb(52, 52, 52);
+$titleWhite: rgb(255, 255, 255);
+$red: #fe504f;
+$pLight: rgb(173, 173, 173);
+$inputsBorder: rgb(174, 174, 174);
+$inputsPlaceholder: rgb(175, 175, 175);
+
+main {
+  position: relative;
+}
+
+.header__container {
+  background-image: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/img/main/background/mainHeader.jpg');
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: cover;
+  position: relative;
+  padding: 40px 200px 0px;
+  height: 885px;
+  color: white;
+}
+
+svg {
+  transform: rotate(180deg);
+  position: absolute;
+  left: -2px;
+  bottom: -2px;
+}
+
+.header__title {
+  line-height: 74px;
+  font-size: 60px;
+  width: 675px;
+  margin-bottom: 20px;
+  margin-top: 160px;
+}
+
+.header__btnContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 460px;
+}
+
+.header__text {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: regular;
+  width: 515px;
+  margin-bottom: 40px;
+}
+
+
+.btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border-radius: 55px;
+  color: white;
+  border: none;
+  font-family: inherit;
+  font-size: 20px;
+  line-height: 74px;
+  z-index: 10;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 20px white;
+    border: 0 0 30px #343434;
+  }
+}
+.btn-main {
+  width: 215px;
+  height: 65px;
+  background: #fe504f;
+  &:hover {
+    box-shadow: 0px 0px 15px rgb(254, 80, 79);
+  }
+}
+.btn-addit {
+  width: 215px;
+  height: 65px;
+  background: $titleBlack;
+
+  &:hover {
+    box-shadow: 0px 0px 15px #343434;
+  }
+}
+
+.main__footer {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+}
+
+
+

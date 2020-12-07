@@ -5,69 +5,6 @@ $pLight: rgb(173, 173, 173);
 $inputsBorder: rgb(174, 174, 174);
 $inputsPlaceholder: rgb(175, 175, 175);
 
-
-body {
-  width: 100%;
-  margin: 0px auto;
-  padding: 0 0;
-  display: flex;
-  flex-direction: column;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-#app {
-  max-width: 1600px;
-  margin: 0px auto;
-  box-sizing: border-box;
-}
-
-main {
-  position: relative;
-}
-
-
-
-.header__container {
-  background-image: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/img/main/background/mainHeader.jpg');
-  background-repeat: no-repeat;
-  background-position: 0 0;
-  background-size: cover;
-  position: relative;
-  padding: 40px 200px 0px;
-  height: 885px;
-  color: white;
-}
-svg {
-  transform: rotate(180deg);
-  position: absolute;
-  left: -2px;
-  bottom: -2px;
-}
-.header__title {
-  line-height: 74px;
-  font-size: 60px;
-  width: 675px;
-  margin-bottom: 20px;
-  margin-top: 160px;
-}
-
-.header__btnContainer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  width: 460px;
-}
-
-.header__text {
-  font-size: 20px;
-  line-height: 28px;
-  font-weight: regular;
-  width: 515px;
-  margin-bottom: 40px;
-}
-
-
 .btn {
   display: flex;
   flex-direction: row;
@@ -80,6 +17,7 @@ svg {
   font-family: inherit;
   font-size: 20px;
   line-height: 74px;
+  z-index: 10;
   cursor: pointer;
   &:focus {
     outline: none;
@@ -377,115 +315,6 @@ svg {
   position: relative;
 }
 
-
-
-.news-card__infoContainer {
-  background-color: $titleBlack;
-  position: relative;
-  color: white;
-  width: 300px;
-  height: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  padding: 30px 30px 30px 30px;
-  box-sizing: border-box;
-
-  hr {
-    height: 3px;
-    width: 50px;
-    background-color: $red;
-    border: none;
-    margin: 10px 0px 12px;
-  }
-
-  &::before {
-    content:'';
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    background-color: $titleBlack;
-    transform: rotate(45deg);
-  }
-}
-
-.news__card_odd, .news__card_even {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  width: 900px;
-  height: 300px;
-}
-
-.news__card_odd .news-card__infoContainer {
-    &::before {
-      top: 40px;
-      left: -12px;
-    }
-  }
-
-.news__card_even {
-  flex-direction: row-reverse;
-
-  .news-card__infoContainer{
-    &::before {
-      top: 40px;
-      right: -12px;
-    }
-  }
-}
-
-.news__card_aside {
-  position: absolute;
-  top: 0;
-  right: 200px;
-  width: 300px;
-  height: 600px;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: flex-start;
-
-
-  .news-card__infoContainer {
-    margin-top: -4px;
-
-    &::before {
-      right: 34px;
-      top: -12px;
-    }
-  }
-}
-
-.news-card__title {
-  font-weight: bold;
-  color: $red;
-  font-size: 20px;
-  line-height: 26px;
-  margin: 0;
-  text-transform: uppercase;
-  cursor: pointer;
-  
-}
-.news-card__text {
-  font-size: 12px;
-  line-height: 20px;
-  margin: 0;
-}
-.news-card__date {
-  position: absolute;
-  color: $red;
-  margin: 0;
-  bottom: 24px;
-  right: 30px;
-  align-self: flex-end;
-  justify-self: flex-end;
-  font-size: 12px;
-  line-height: 20px;
-  font-style: italic;
-}
-
-
 .contactInfo__container {
   position: relative;
   width: 100%;
@@ -663,9 +492,3 @@ svg {
   line-height: 74px;
   align-self: flex-end;
 }
-
-
-
-
-
-

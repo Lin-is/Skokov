@@ -1,23 +1,5 @@
 <template>
-  <header class='header__container'>
-    <Navigation/>
-    <div class="header__content">
-      <h1 class="header__title">Global management consulting agency</h1>
-      <p class="header__text">Growth doesn't always go the way you expect. Our strategy consultants can help you climb.</p>
-      <div class="header__btnContainer">
-        <button class="btn btn-main">Get started</button>
-        <button class="btn btn-addit">Learn more</button>
-      </div>
-    </div>
-    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="585" fill="white">
-      <polygon points="0 0, 0 585, 201 360, 400 256, 600 336, 799 231, 1000 160, 1200 216, 1399 112, 1600 43, 0 0"></polygon>
-    </svg> -->
-    <svg xmlns="http://www.w3.org/2000/svg" width="1605" height="590" fill="white">
-      <polygon points="0 0, 0 590, 201 360, 400 256, 600 336, 799 231, 1000 160, 1200 216, 1399 112, 1605 43, 1605 0"></polygon>
-    </svg>
-  </header>
   <main>
-
     <section class="services__container">
       <h2 class="section__title services__title">our services</h2>
       <p class="services__text">Our management consulting services focus on our clients' most critical issues and opportunities.
@@ -86,15 +68,7 @@
       <h2 class="section__title news__title">news</h2>
       <p class="section__text news__text">Together, we find value across boundaries, develop insights to act on, and energize teams to sustain success. We're passionate about always doing the right thing for our clients, our people and our communities, even if it isn't easy.</p>
       <div class="section__cardsContainer news__cardsContainer">
-        <div v-for="(news, index) in allNews" :key="index" :class="calcNewsCardClass(index + 1)">
-          <img :src="news.photo" alt="news photo" class="section-card__photo news-card__photo">
-          <div class="section-card__infoContainer news-card__infoContainer">
-            <a class="section-card__title news-card__title">{{ news.title }}</a>
-            <hr/>
-            <p class="section-card__text news-card__text">{{ news.text }}</p>
-            <p class="section-card__date news-card__date">{{ news.date }}</p>
-          </div>
-        </div>
+        <NewsCard v-for="(news, index) of allNews" :key="index" :newsCardInfo="news" :index="index"/>
       </div>
     </section>
 
@@ -109,7 +83,7 @@
             <p class="contactInfo-email__content contactInfo-item__content">{{ contacts.email }}</p>
         </div>
       </div>
-      <form action="" class="contactInfo__form">
+      <form action="" class="contactInfo__form" @submit.prevent>
         <h2 class="contactInfo-form__title">contact</h2>
         <hr/>
         <p class="contactInfo-form__text">Please contact us using contact form below.</p>
@@ -120,18 +94,18 @@
         <button class="btn btn-main contactInfo-form__btn">Send</button>
       </form>
     </section>
-    <Social/>
   </main>
 </template>
 
 <script>
-import Navigation from '@/components/Navigation.vue'
-import Social from '@/components/Social.vue'
+import NewsCard from '@/components/NewsCard.vue'
+import allNews from '@/data/allNews.json'
 
 export default {
   name: 'Home, Social',
   data () {
     return {
+      allNews: [],
       servItems: [
         {
           img: './img/main/services/PerformanceImprovement.png',
@@ -275,26 +249,6 @@ export default {
           additText: ''
         }
       ],
-      allNews: [
-        {
-          photo: './img/main/news/1news.jpg',
-          title: 'Why financial institutions need a new IT model',
-          text: 'Why old IT models are unlikely to deliver the competitive edge that banks, insurers and wealth management firms need from technology',
-          date: '09.03.2014'
-        },
-        {
-          photo: './img/main/news/2news.jpg',
-          title: 'Reimagining IT for an omnichannel world',
-          text: 'The technology that powers retail is evolving rapidly. Retailers and their IT groups will have to rise to stay ahead.',
-          date: '08.20.2014'
-        },
-        {
-          photo: './img/main/news/3news.jpg',
-          title: 'Making the most of generation assets in turbulent times',
-          text: 'A thorough review of a power generation portfolio informs decisions about how to reduce costs, raise revenues and make strategic plans.',
-          date: '08.27.2014'
-        }
-      ],
       contacts: {
         address: '43 gagarina street, kharkov, ukraine',
         phone: '+38 (057) 777-05-05',
@@ -302,21 +256,20 @@ export default {
       }
     }
   },
+  mounted () {
+    this.getAllNews(allNews)
+  },
   methods: {
-    calcNewsCardClass (index) {
-      let className = 'section__card news__card '
-      if (index % 3 === 0) {
-        className += 'news__card_aside'
-      } else if (index % 3 === 1) {
-        className += 'news__card_odd'
-      } else if (index % 3 === 2) {
-        className += 'news__card_even'
-      }
-      return className
+    getAllNews (allNews) {
+      this.allNews = allNews.slice(0, 3)
     }
   },
   components: {
-    Navigation, Social
+    NewsCard
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  @import '@/assets/styles/home.scss'
+</style>

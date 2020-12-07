@@ -48,5 +48,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '../assets/styles/social.scss'
+  @import '../assets/styles/components/social.scss'
 </style>
