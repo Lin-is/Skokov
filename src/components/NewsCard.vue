@@ -1,5 +1,5 @@
 <template>
-  <div class="section__card news__card" :class="calcNewsCardClass(index + 1)" :style="createStyle(index + 1)">
+  <div class="section__card news__card" :class="calcNewsCardClass(this.newsCardInfo.id)" :style="createStyle(this.newsCardInfo.id)">
     <img :src="newsCardInfo.photo" alt="news photo" class="section-card__photo news-card__photo">
     <div class="section-card__infoContainer news-card__infoContainer">
       <router-link :to="articlePath" class="section-card__title news-card__title">{{ newsCardInfo.title }}</router-link>
@@ -17,8 +17,8 @@ export default {
       type: Object,
       required: true
     },
-    index: {
-      type: Number,
+    aside: {
+      type: Boolean,
       required: true
     }
   },
@@ -30,11 +30,11 @@ export default {
   methods: {
     calcNewsCardClass (index) {
       let className = ''
-      if (index % 3 === 0) {
+      if (this.aside) {
         className = 'news__card_aside'
-      } else if (index % 3 === 1) {
+      } else if (this.newsCardInfo.id % 3 === 1) {
         className = 'news__card_odd'
-      } else if (index % 3 === 2) {
+      } else if (this.newsCardInfo.id % 3 === 2) {
         className = 'news__card_even'
       }
       return className

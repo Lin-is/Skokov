@@ -5,6 +5,13 @@ $pLight: rgb(173, 173, 173);
 $inputsBorder: rgb(174, 174, 174);
 $inputsPlaceholder: rgb(175, 175, 175);
 
+$maxWidth: 1600;
+@mixin adaptiv-font($pcSize, $mobSize) {
+ $addSize: $pcSize - $mobSize;
+ $maxWidth: $maxWidth - 320;
+ font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth}));
+}
+
 main {
   position: relative;
 }
@@ -18,12 +25,17 @@ main {
   padding: 40px 200px 0px;
   height: 885px;
   color: white;
+  @media (max-width: 1598px) {
+    padding: 20px 5% 0px;
+    height: 700px;
+  }
 }
 
 svg {
+  width: 100%;
   transform: rotate(180deg);
   position: absolute;
-  left: -2px;
+  left: 0;
   bottom: -2px;
 }
 
@@ -33,6 +45,17 @@ svg {
   width: 675px;
   margin-bottom: 20px;
   margin-top: 160px;
+  @include adaptiv-font(60, 30);
+  @media (max-width: 1598px) {
+    margin-top: 70px;
+  }
+  @media (max-width: 750px) {
+    width: 100%;
+    line-height: 40px;
+    margin-top: 30px;
+  }
+
+  
 }
 
 .header__btnContainer {
@@ -41,6 +64,11 @@ svg {
   align-items: center;
   justify-content: space-between;
   width: 460px;
+  @media (max-width: 500px) {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .header__text {
@@ -49,6 +77,9 @@ svg {
   font-weight: regular;
   width: 515px;
   margin-bottom: 40px;
+  @media (max-width: 710px) {
+    width: 100%;
+  }
 }
 
 
@@ -71,6 +102,7 @@ svg {
     box-shadow: 0 0 20px white;
     border: 0 0 30px #343434;
   }
+  
 }
 .btn-main {
   width: 215px;
@@ -79,6 +111,9 @@ svg {
   &:hover {
     box-shadow: 0px 0px 15px rgb(254, 80, 79);
   }
+  @media (max-width: 500px) {
+    margin-bottom: 20px; 
+   }
 }
 .btn-addit {
   width: 215px;

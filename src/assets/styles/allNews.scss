@@ -14,11 +14,21 @@ $inputsPlaceholder: rgb(175, 175, 175);
   box-sizing: border-box;
   margin: 0px;
   z-index: 5;
-  padding: 0px 200px;
+  @media (max-width: 1250px) {
+    padding: 0 30px;
+    align-items: center;
+  }
+  @media (max-width: 450px) {
+    padding: 0 5px;
+  }
 }
 
 .allNews__content {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin: 0px auto;
 }
 
 .allNews__title {
@@ -30,11 +40,14 @@ $inputsPlaceholder: rgb(175, 175, 175);
   margin-top: 190px;
   padding: 0;
   z-index: 10;
+  @media (max-width: 1000px) {
+    margin-top: 100px;
+  }
 }
 
 .allNews__searchContainer {
-  align-self: flex-end;
   margin-top: 75px;
+  align-self: flex-end;
   z-index: 10;
   width: 300px;
   padding: 6px;
@@ -49,24 +62,43 @@ $inputsPlaceholder: rgb(175, 175, 175);
   height: 26px;
   background-color: transparent;
   border: 1px solid $red; 
+  padding-left: 10px;
+  color: $titleWhite;
+  font-size: 16px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  &:hover {
+    border-color: $titleWhite;
+  }
 }
 
 .allNews__searchBtn {
   margin-left: 5px;
   height: 30px;
   width: 42px;
-  background-color: $red;
+  background: url('/img/loupe.svg') $red no-repeat 50% 52.5%;
   border: none;
+  cursor: pointer;
+  &:hover {
+    background-color: #fe7776;
+  }
 }
 
 .allNews__cardsContainer {
-  width: 100%;
   box-sizing: border-box;
   position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    margin: 0 auto;
+  }
 }
 
 .allNews__showMoreBtn {
-  width: 370px;
+  max-width: 370px;
+  min-width: 300px;
+  width: 100%;
   height: 60px;
   background-color: $titleBlack;
   color: $red;
@@ -79,4 +111,12 @@ $inputsPlaceholder: rgb(175, 175, 175);
   align-items: center;
   justify-content: center;
   margin: 60px 0px;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0px 0px 15px black;
+    color: $titleWhite;
+  }
+  @media (max-width: 250px) {
+    margin: 0 auto;
+  }
 }

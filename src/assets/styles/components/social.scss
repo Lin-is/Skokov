@@ -11,6 +11,10 @@
   color: white;
   background-color: #343434;
   padding: 0px 255px 0px 200px;
+
+  @media (max-width: 1598px) {
+    padding: 0px 6.5% 0px 5%;
+  }
 }
 
 .social__copyright {

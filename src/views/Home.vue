@@ -44,15 +44,7 @@
           <h3 class="about-item__title about-team__title">our team</h3>
           <hr/>
           <div class="about-team__cardsContainer">
-            <div class="about-team__card" v-for="(teamMember, index) in teamMembers" :key="index">
-              <img :src="teamMember.photo" alt="photo" class="about-item__photo">
-              <div class="about-item__infoContainer">
-                <h3 class="about-item__name"></h3>
-                <br/>
-                <p class="about-item__position"></p>
-                <p class="about-item__addText"></p>
-              </div>
-            </div>
+            <TeamCard class="about-team__card" v-for="(teamMember, index) in teamMembers" :key="index" :teamMember="teamMember"/>
           </div>
         </section>
       </div>
@@ -68,7 +60,12 @@
       <h2 class="section__title news__title">news</h2>
       <p class="section__text news__text">Together, we find value across boundaries, develop insights to act on, and energize teams to sustain success. We're passionate about always doing the right thing for our clients, our people and our communities, even if it isn't easy.</p>
       <div class="section__cardsContainer news__cardsContainer">
-        <NewsCard v-for="(news, index) of allNews" :key="index" :newsCardInfo="news" :index="index"/>
+        <div class="section__cardsContainer-center">
+          <NewsCard v-for="(news, index) of mainNews()" :key="index" :newsCardInfo="news" :aside="false"/>
+        </div>
+        <div class="section__cardsContainer-aside">
+          <NewsCard v-for="(news, index) of asideNews()" :key="index" :newsCardInfo="news" :aside="true"/>
+        </div>
       </div>
     </section>
 
@@ -83,16 +80,18 @@
             <p class="contactInfo-email__content contactInfo-item__content">{{ contacts.email }}</p>
         </div>
       </div>
-      <form action="" class="contactInfo__form" @submit.prevent>
-        <h2 class="contactInfo-form__title">contact</h2>
-        <hr/>
-        <p class="contactInfo-form__text">Please contact us using contact form below.</p>
-        <input type="text" placeholder="Name" class="contactInfo-form__input contactInfo-form__name">
-        <input type="text" placeholder="Email" class="contactInfo-form__input contactInfo-form__email">
-        <input type="text" placeholder="Subject" class="contactInfo-form__input contactInfo-form__subject">
-        <textarea name="contactInfo-message" placeholder="Message" id="" cols="30" rows="10" class="contactInfo-form__input contactInfo-form__message"></textarea>
-        <button class="btn btn-main contactInfo-form__btn">Send</button>
-      </form>
+      <div class="contactInfo__formContainer">
+        <form action="" class="contactInfo__form" @submit.prevent>
+          <h2 class="contactInfo-form__title">contact</h2>
+          <hr/>
+          <p class="contactInfo-form__text">Please contact us using contact form below.</p>
+          <input type="text" placeholder="Name" class="contactInfo-form__input contactInfo-form__name">
+          <input type="text" placeholder="Email" class="contactInfo-form__input contactInfo-form__email">
+          <input type="text" placeholder="Subject" class="contactInfo-form__input contactInfo-form__subject">
+          <textarea name="contactInfo-message" placeholder="Message" id="" cols="30" rows="10" class="contactInfo-form__input contactInfo-form__message"></textarea>
+          <button class="btn btn-main contactInfo-form__btn">Send</button>
+        </form>
+      </div>
     </section>
   </main>
 </template>
@@ -100,8 +99,10 @@
 <script>
 import NewsCard from '@/components/NewsCard.vue'
 import Carousel from '@/components/Carousel.vue'
+import TeamCard from '@/components/TeamMemberCard.vue'
 import allNews from '@/data/allNews.json'
 import clients from '@/data/clients.json'
+import team from '@/data/team.json'
 
 export default {
   name: 'Home, Social',
@@ -152,80 +153,7 @@ export default {
           description: 'Predicting, measuring and managing risk associated with change management'
         }
       ],
-      teamMembers: [
-        {
-          photo: './img/main/team/1fem.jpg',
-          name: '',
-          position: '',
-          additText: ''
-        },
-        {
-          photo: './img/main/team/10m.jpg',
-          name: 'Clark Kent',
-          position: 'Bad Debt Manager',
-          additText: 'Team Leader'
-        },
-        {
-          photo: './img/main/team/2m.jpg',
-          name: '',
-          position: '',
-          additText: ''
-        },
-        {
-          photo: './img/main/team/3m.jpg',
-          name: '',
-          position: '',
-          additText: ''
-        },
-        {
-          photo: './img/main/team/4fem.jpg',
-          name: '',
-          position: '',
-          additText: ''
-        },
-        {
-          photo: './img/main/team/5m.jpg',
-          name: '',
-          position: '',
-          additText: ''
-        },
-        {
-          photo: './img/main/team/6fem.jpg',
-          name: '',
-          position: '',
-          additText: ''
-        },
-        {
-          photo: './img/main/team/7fem.jpg',
-          name: '',
-          position: '',
-          additText: ''
-        },
-        {
-          photo: './img/main/team/8m.jpg',
-          name: '',
-          position: '',
-          additText: ''
-        },
-        {
-          photo: './img/main/team/9fem.jpg',
-          name: '',
-          position: '',
-          additText: ''
-        },
-        {
-          photo: './img/main/team/10m.jpg',
-          name: '',
-          position: '',
-          additText: ''
-        },
-        {
-          photo: './img/main/team/11fem.jpg',
-          name: '',
-          position: '',
-          additText: ''
-        }
-      ],
+      teamMembers: [],
       contacts: {
         address: '43 gagarina street, kharkov, ukraine',
         phone: '+38 (057) 777-05-05',
@@ -236,14 +164,23 @@ export default {
   mounted () {
     this.getAllNews(allNews)
     this.clients = clients
+    this.teamMembers = team
   },
   methods: {
     getAllNews (allNews) {
       this.allNews = allNews.slice(0, 3)
+    },
+    mainNews () {
+      const mainNews = this.allNews.filter(news => news.id % 3 !== 0)
+      return mainNews
+    },
+    asideNews () {
+      const asideNews = this.allNews.filter(news => news.id % 3 === 0)
+      return asideNews
     }
   },
   components: {
-    NewsCard, Carousel
+    NewsCard, Carousel, TeamCard
   }
 }
 </script>

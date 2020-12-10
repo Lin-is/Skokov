@@ -36,11 +36,13 @@ export default {
     return {
       clientsByModules: [],
       picked: 0,
+      screenWidth: '',
       styleTransit: {}
     }
   },
   created () {
     this.putClientsOnModules()
+    window.addEventListener('resize', this.updateWidth)
   },
   methods: {
     putClientsOnModules () {
@@ -50,11 +52,26 @@ export default {
       }
     },
     moveCarousel (index) {
-      const styleObject = {
+      let styleObject = {
         transform: `translateX(${index * (-570)}px)`,
         transition: 'transform 0.4s'
       }
+      if (this.screenWidth < 710) {
+        styleObject = {
+          transform: `translateX(${index * (-380)}px)`,
+          transition: 'transform 0.4s'
+        }
+      }
+      if (this.screenWidth < 416) {
+        styleObject = {
+          transform: `translateX(${index * (-290)}px)`,
+          transition: 'transform 0.4s'
+        }
+      }
       this.styleTransit = styleObject
+    },
+    updateWidth () {
+      this.screenWidth = window.innerWidth
     }
   }
 }

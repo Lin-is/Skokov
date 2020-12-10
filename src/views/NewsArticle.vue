@@ -19,20 +19,20 @@
         What does this transformation aim to achieve? Some say it’s all about enabling speed. While speed is critical, we think that oversimplifies the challenge. As guardians of customers’ financial security, financial services companies must maintain client trust in their brands, which is the foundation of their customer relationship. Toward that end, IT leaders must worry about cybersecurity capabilities to counter increasingly sophisticated threats. They must be able to provide anytime-anywhere access while continuing to meet regulatory demands. They have to do all of this and construct a scalable and intelligent environment that delivers on mobile, Web, social and advanced analytic considerations. IT leaders aren’t getting a free pass on these other priorities.
       </p>
     </div>
+    <section class="article__commentSection">
+      <p class="article__commentsCounter">{{commsNum}} comments</p>
+      <hr>
+      <div class="article__addCommentArea">
+        <textarea class="article__commentsTextarea" placeholder="Your comment"></textarea>
+        <button class="article__submitCommentBtn">submit comment</button>
+      </div>
+      <div class="article__commentsContainer">
+        <ul class="article__commentList">
+          <commentsTree @length="countComms" :comment="comment" v-for="(comment, index) in comments" :key="index"></commentsTree>
+        </ul>
+      </div>
+    </section>
   </article>
-  <section class="article__commentSection">
-    <p class="article__commentsCounter">{{comments.length}} comments</p>
-    <hr>
-    <div class="article__addCommentArea">
-      <textarea class="article__commentsTextarea" placeholder="Your comment"></textarea>
-      <button class="article__submitCommentBtn">submit comment</button>
-    </div>
-    <div class="article__commentsContainer">
-      <ul class="article__commentList">
-        <commentsTree :comment="comment" v-for="(comment, index) in comments" :key="index"></commentsTree>
-      </ul>
-    </div>
-  </section>
 </template>
 
 <script>
@@ -44,37 +44,38 @@ export default {
     return {
       id: null,
       article: {},
+      commsNum: 0,
       comments: [
         {
           author: 'Skokov',
-          time: '',
-          img: './img/article/commentIcons/skokovIcon.jpg',
+          time: new Date(2020, 11, 10, 14),
+          img: '/img/article/commentIcons/skokovIcon.jpg',
           text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.',
           replys: []
         },
         {
           author: 'wernay',
-          time: '',
-          img: './img/article/commentIcons/wernayIcon.jpg',
+          time: new Date(2020, 11, 10, 14),
+          img: '/img/article/commentIcons/wernayIcon.jpg',
           text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna volutpat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.',
           replys: []
         },
         {
           author: 'mr. dev',
-          time: '',
-          img: './img/article/commentIcons/mrDevIcon.jpg',
+          time: new Date(2020, 11, 10, 6),
+          img: '/img/article/commentIcons/mrDevIcon.jpg',
           text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.  Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue.',
           replys: [
             {
               author: 'wernay',
-              time: '',
-              img: './img/article/commentIcons/wernayIcon.jpg',
+              time: new Date(2020, 11, 10, 6),
+              img: '/img/article/commentIcons/wernayIcon.jpg',
               text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy.',
               replys: [
                 {
                   author: 'mr. dev',
-                  time: '',
-                  img: './img/article/commentIcons/mrDevIcon.jpg',
+                  time: new Date(2020, 11, 10, 5),
+                  img: '/img/article/commentIcons/mrDevIcon.jpg',
                   text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.',
                   replys: []
                 }
@@ -84,8 +85,8 @@ export default {
         },
         {
           author: 'denpro',
-          time: '',
-          img: './img/article/commentIcons/denproIcon.jpg',
+          time: new Date(2020, 11, 10, 6),
+          img: '/img/article/commentIcons/denproIcon.jpg',
           text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.',
           replys: []
         }
@@ -95,6 +96,17 @@ export default {
   mounted () {
     this.id = this.$route.params.id
     this.article = newsMethods.findNewsById(this.id + '')
+    this.countComms(this.comments)
+  },
+  methods: {
+    countComms (comments) {
+      this.commsNum += comments.length
+      for (const comment of comments) {
+        if (comment.replys.length > 0) {
+          this.countComms(comment.replys)
+        }
+      }
+    }
   },
   components: {
     commentsTree

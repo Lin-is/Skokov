@@ -2,7 +2,7 @@
   <header class='header__container'>
     <Navigation/>
     <div class="header__content">
-      <svg xmlns="http://www.w3.org/2000/svg" width="1605" height="590" fill="white">
+      <svg preserveAspectRatio="none" viewBox="0 0 1605 590" xmlns="http://www.w3.org/2000/svg" width="101%" height="66.67%" fill="white">
         <polygon points="0 0, 0 590, 201 360, 400 256, 600 336, 799 231, 1000 160, 1200 216, 1399 112, 1605 43, 1605 0"></polygon>
       </svg>
       <h1 class="header__title">Global management consulting agency</h1>

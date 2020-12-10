@@ -1,9 +1,16 @@
 $titleBlack: rgb(52, 52, 52);
 $titleWhite: rgb(255, 255, 255);
-$red: #fe504f;
+$red: rgb(254, 80, 79);
 $pLight: rgb(173, 173, 173);
 $inputsBorder: rgb(174, 174, 174);
 $inputsPlaceholder: rgb(175, 175, 175);
+
+$maxWidth: 1600;
+@mixin adaptiv-font($pcSize, $mobSize) {
+ $addSize: $pcSize - $mobSize;
+ $maxWidth: $maxWidth - 320;
+ font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth}));
+}
 
 .btn {
   display: flex;
@@ -19,11 +26,6 @@ $inputsPlaceholder: rgb(175, 175, 175);
   line-height: 74px;
   z-index: 10;
   cursor: pointer;
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 20px white;
-    border: 0 0 30px #343434;
-  }
 }
 .btn-main {
   width: 215px;
@@ -31,6 +33,9 @@ $inputsPlaceholder: rgb(175, 175, 175);
   background: #fe504f;
   &:hover {
     box-shadow: 0px 0px 15px rgb(254, 80, 79);
+  }
+  @media (max-width: 500px) {
+    margin-bottom: 20px;;
   }
 }
 .btn-addit {
@@ -53,7 +58,10 @@ $inputsPlaceholder: rgb(175, 175, 175);
   display: flex;
   flex-direction: column;
   align-items: center; 
-  padding: 0 200px;
+  padding: 0 12.5%;
+  @media (max-width: 1598px) {
+    padding: 0 5%;
+  }
 }
 
 .services__title {
@@ -61,7 +69,7 @@ $inputsPlaceholder: rgb(175, 175, 175);
 }
 
 .services__text {
-  width: 920px;
+  width: 57.5%;
   text-align: center;
   color: $pLight;
   font-size: 16px;
@@ -75,6 +83,9 @@ $inputsPlaceholder: rgb(175, 175, 175);
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  @media (max-width: 1100px){
+    justify-content: space-evenly;
+  }
 }
 
 .services__item {
@@ -92,6 +103,13 @@ $inputsPlaceholder: rgb(175, 175, 175);
     width: 61px;
     border: none;
     margin-bottom: 15px;
+  }
+
+  @media (max-width: 1100px) {
+    width: 50%;
+  }
+  @media (max-width: 525px) {
+    width: 100%;
   }
 }
 
@@ -130,6 +148,15 @@ $inputsPlaceholder: rgb(175, 175, 175);
   font-size: 34px;
   line-height: 58px;
   color: $titleWhite;
+  @include adaptiv-font(34, 22);
+  @media (max-width: 1000px) {
+    br {
+      display: none;
+    }
+  }
+  @media (max-width: 750px) {
+    line-height: 35px;
+  }
 }
 
 
@@ -139,9 +166,15 @@ $inputsPlaceholder: rgb(175, 175, 175);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 80px 200px 80px;
+  padding: 80px 12.5% 80px;
+  @media (max-width: 1598px) {
+    padding: 80px 5% 80px;
+  }
+  @media (max-width: 750px) {
+    text-align: center;
+  }
 }
-.about__titile{
+.about__title{
   color: $titleBlack;
   margin-bottom: 22px;
 }
@@ -150,7 +183,6 @@ $inputsPlaceholder: rgb(175, 175, 175);
   color: $pLight;
   font-size: 16px;
   line-height: 24px;
-
 }
 
 .about__itemsContainer {
@@ -160,6 +192,11 @@ $inputsPlaceholder: rgb(175, 175, 175);
   flex-wrap: wrap;
   margin-top: 70px;
   justify-content: space-between;
+
+  @media (max-width: 1334px) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .about__item {
@@ -171,10 +208,21 @@ $inputsPlaceholder: rgb(175, 175, 175);
     margin: 0;
     margin-bottom: 25px;
   }
+  @media (max-width: 750px) {
+    hr {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    margin-bottom: 20px;
+    
+  }
 }
 
 .about__weDo {
-  width: 580px;
+  // width: 50%;
+  @media (max-width: 1334px) {
+    width: 100%;
+  }
 }
 
 .about-weDo__text {
@@ -182,7 +230,16 @@ $inputsPlaceholder: rgb(175, 175, 175);
   font-size: 14px;
   line-height: 24px;
   margin: 0px;
+  max-width: 580px;
+
+  @media (max-width: 1334px) {
+    max-width: none;
+    width: 100%;
+  }
 }
+
+
+
 
 .about-item__title {
   text-transform: uppercase;
@@ -193,48 +250,36 @@ $inputsPlaceholder: rgb(175, 175, 175);
   margin-bottom: 20px;
 }
 .about__clients {
-  // width: 50%;
   flex-wrap: wrap;
-  width: 570px;
+  @media (max-width: 1334px) {
+    width: 100%;
+  }
 }
 
-.about-clients__clientLogo {
-  margin-right: 5px;
+.about-clients__clientList {
+  max-width: 570px;
+  @media (max-width: 1570px) {
+    margin: 0px auto;
+  }
 }
+
+
 
 .about__team {
   width: 100%;
 }
 .about-team__cardsContainer {
-  width: 100%;
+  max-width: 1200px;
+  margin: 0px auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: flex-start;
-}
-.about-team__card {
-  width: 16.5%;
-  height: auto;
-  margin: 0;
-  cursor: pointer;
-  display: block;
-  padding: 0;
-}
-.about-team__photo {
-  width: 100%;
-  height: auto;
-  &:hover {
-    box-shadow: inset 0px 0px 5px 5px black;
+  @media (max-width: 1334px) {
+    max-width: 800px;
+    margin: 0px auto;
+    justify-content: center;
   }
-}
-
-.about-item__photo:nth-child(2) {
-  display: none;
-}
-
-.about-item__infoContainer {
-  width: 100%;
-  display: none;
 }
 
 
@@ -253,6 +298,13 @@ $inputsPlaceholder: rgb(175, 175, 175);
   background-repeat: repeat, no-repeat, no-repeat;
   background-position: 0 0;
   background-size: 2px 2px, cover, cover;
+  @media (max-width: 1400px) {
+    justify-content: center;
+  }
+  @media (max-width: 345px) {
+    height: auto;
+    padding: 10px 0px;
+  }
 }
 
 
@@ -266,6 +318,14 @@ $inputsPlaceholder: rgb(175, 175, 175);
   &:hover {
     box-shadow: 0px 0px 15px $red;
   }
+  @media (max-width: 1400px) {
+    margin-top: 0px;
+  }
+  @media (max-width: 345px) {
+    margin-top: 5px;
+    // width: 75px;
+    // height: 75px;
+  }
 }
 
 .promoVid__title {
@@ -273,13 +333,21 @@ $inputsPlaceholder: rgb(175, 175, 175);
   line-height: 58px;
   margin: 0px;
   margin-bottom: 10px;
+  @include adaptiv-font(34, 22);
+  @media (max-width: 750px) {
+    line-height: 35px;
+  }
 }
 
 .promoVid__text {
   font-size: 16px;
   line-height: 24px;
   margin: 0;
-  width: 1020px;
+  width: 63.75%;
+  @media (max-width: 1000px) {
+    width: 90%;
+  }
+
 }
 
 
@@ -304,15 +372,24 @@ $inputsPlaceholder: rgb(175, 175, 175);
   color: $pLight;
   font-size: 16px;
   line-height: 24px;
-  width: 1080px;
+  width: 67.5%;
   margin-bottom: 70px;
 }
 
 .news__cardsContainer {
-  width: 100%;
-  padding: 0px 200px;
+  // width: 100%;
+  padding: 0px 12.5%;
+  margin: 0px auto;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
   position: relative;
+  @media (max-width: 1598px) {
+    padding: 0px 5%;
+  }
+  @media (max-width: 999px) {
+    flex-direction: column;
+  }
 }
 
 .contactInfo__container {
@@ -323,7 +400,7 @@ $inputsPlaceholder: rgb(175, 175, 175);
   flex-wrap: wrap;
   justify-content: space-between;
   height: 816px;
-  padding: 95px 255px 0px 200px;
+  padding: 95px 15.9375% 0px 12.5%;
   box-sizing: border-box;
   background-image: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('/img/main/background/contactForm.jpg');
   background-repeat: no-repeat;
@@ -348,25 +425,52 @@ $inputsPlaceholder: rgb(175, 175, 175);
     border: none;
     margin: 0;
   }
+
+  @media (max-width: 1598px) {
+    padding: 95px 5% 0px 6.5%;
+  }
+
+  @media (max-width: 1100px) {
+    height: auto;
+    flex-direction: column;
+    padding: 95px 5% 120px 5%;
+    align-items: center;
+  }
 }
 
 .contactInfo__infoContainer {
+  width: 50%;
   hr {
     margin: 25px 0 40px;
+  }
+  @media (max-width: 1100px) {
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+    hr {
+      margin: 25px auto 40px auto;
+    }
   }
 }
 
 .contactInfo__itemsContainer {
   display: flex;
   flex-direction: column;
+  @media (max-width: 1100px) {
+    align-items: center;
+  }
 }
 
 .contactInfo__text {
-  width: 500px;
+  max-width: 500px;
+  width: 100%;
   font-size: 14px;
   line-height: 20px;
   color: $titleWhite;
   margin: 33px 0px 0px;
+  @media (max-width: 1100px) {
+    max-width: 100%;
+  }
 }
 
 .contactInfo-item__content {
@@ -417,15 +521,34 @@ $inputsPlaceholder: rgb(175, 175, 175);
   }
 }
 
+.contactInfo__formContainer {
+  flex-basis: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .contactInfo__form {
   display: flex;
   flex-direction: column;
-  margin-left: 200px;
+  max-width: 445px;
+  min-width: 300px;
+  width: 445px;
 
   hr {
     margin-top: 10px;
     margin-bottom: 18px;
     }
+
+  @media (max-width: 1100px) {
+    margin-bottom: 20px;
+    text-align: center;
+    hr {
+      margin: 25px auto 40px auto;
+    }
+  }
+  @media (max-width: 526px) {
+    width: 100%;
+  }
 }
 
 .contactInfo-form__title {
@@ -446,7 +569,9 @@ $inputsPlaceholder: rgb(175, 175, 175);
 }
 
 .contactInfo-form__input {
-  width: 445px;
+  max-width: 445px;
+  min-width: 300px;
+  width: 100%;
   height: 45px;
   background-color: transparent;
   border: 1px solid $inputsBorder;
@@ -491,4 +616,7 @@ $inputsPlaceholder: rgb(175, 175, 175);
   font-size: 16px;
   line-height: 74px;
   align-self: flex-end;
+  @media (max-width: 1100px) {
+    align-self: center;
+  }
 }

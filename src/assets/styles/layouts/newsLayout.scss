@@ -13,6 +13,11 @@ $inputsPlaceholder: rgb(175, 175, 175);
   padding: 0px 200px;
   box-sizing: border-box;
   background: transparent;
+  @media (max-width: 1598px) {
+    padding: 0px 5% 0px;
+    top: 20px;
+    height: 700px;
+  }
 }
 
 .newsLayout__img {
@@ -28,8 +33,9 @@ $inputsPlaceholder: rgb(175, 175, 175);
   z-index: 1;
 }
 .newsLayout__svg {
-  left: -2px;
-  top: 70px;
+  width: 100%;
+  left: 0px;
+  bottom: -1px;
   transform: rotate(180deg);
   position: absolute;
 }

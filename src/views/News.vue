@@ -7,7 +7,12 @@
         <button class="allNews__searchBtn"></button>
       </div>
       <div class="allNews__cardsContainer">
-        <NewsCard v-for="(news, index) of allNews" :key="index" :newsCardInfo="news" :index="index"/>
+        <div class="allNews__cardsContainer-center">
+          <NewsCard v-for="(news, index) of mainNews()" :key="index" :newsCardInfo="news" :aside="false"/>
+        </div>
+        <div class="allNews__cardsContainer-aside">
+          <NewsCard v-for="(news, index) of asideNews()" :key="index" :newsCardInfo="news" :aside="true"/>
+        </div>
       </div>
     </div>
     <button @click.prevent class="allNews__showMoreBtn">show more</button>
@@ -26,6 +31,16 @@ export default {
   },
   mounted () {
     this.allNews = allNews
+  },
+  methods: {
+    mainNews () {
+      const mainNews = this.allNews.filter(news => news.id % 3 !== 0)
+      return mainNews
+    },
+    asideNews () {
+      const asideNews = this.allNews.filter(news => news.id % 3 === 0)
+      return asideNews
+    }
   },
   components: {
     NewsCard

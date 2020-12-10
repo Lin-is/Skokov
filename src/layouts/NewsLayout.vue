@@ -4,7 +4,7 @@
   </header>
   <main class="newsLayout__main">
     <div class="newsLayout__img">
-      <svg class="newsLayout__svg" xmlns="http://www.w3.org/2000/svg" width="1605" height="590" fill="white">
+      <svg class="newsLayout__svg" preserveAspectRatio="none" viewBox="0 0 1605 590" xmlns="http://www.w3.org/2000/svg" width="101%" height="66.67%" fill="white">
         <polygon points="0 0, 0 590, 201 360, 400 256, 600 336, 799 231, 1000 160, 1200 216, 1399 112, 1605 43, 1605 0"></polygon>
       </svg>
     </div>
