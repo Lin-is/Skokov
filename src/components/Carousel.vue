@@ -44,6 +44,9 @@ export default {
     this.putClientsOnModules()
     window.addEventListener('resize', this.updateWidth)
   },
+  mounted () {
+    this.updateWidth()
+  },
   methods: {
     putClientsOnModules () {
       const clientsInModule = 6
