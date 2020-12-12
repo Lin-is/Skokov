@@ -41,6 +41,7 @@
         </section>
 
         <section class="about__item about__team">
+          <a id="about"></a>
           <h3 class="about-item__title about-team__title">our team</h3>
           <hr/>
           <div class="about-team__cardsContainer">

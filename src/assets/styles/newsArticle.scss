@@ -127,8 +127,12 @@ $maxWidth: 1600;
 
 .article__textContainer {
   padding: 50px;
+  box-sizing: border-box;
   @media (min-width: 1999px) {
     min-width: 1100px;
+  }
+  @media (max-width: 500px) {
+    padding: 10px;
   }
 }
 

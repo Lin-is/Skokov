@@ -1,42 +1,42 @@
 [
   {
     "id": "1",
-    "photo": "./img/main/news/1news.jpg",
+    "photo": "/img/main/news/1news.jpg",
     "title": "Why financial institutions need a new IT model",
     "text": "Why old IT models are unlikely to deliver the competitive edge that banks, insurers and wealth management firms need from technology",
     "date": "09.03.2014"
   },
   {
     "id": "2",
-    "photo": "./img/main/news/2news.jpg",
+    "photo": "/img/main/news/2news.jpg",
     "title": "Reimagining IT for an omnichannel world",
     "text": "The technology that powers retail is evolving rapidly. Retailers and their IT groups will have to rise to stay ahead.",
     "date": "08.20.2014"
   },
   {
     "id": "3",
-    "photo": "./img/main/news/3news.jpg",
+    "photo": "/img/main/news/3news.jpg",
     "title": "Making the most of generation assets in turbulent times",
     "text": "A thorough review of a power generation portfolio informs decisions about how to reduce costs, raise revenues and make strategic plans.",
     "date": "08.27.2014"
   },
   {
     "id": "4",
-    "photo": "./img/main/news/4news.jpg",
+    "photo": "/img/main/news/4news.jpg",
     "title": "How SaaS providers can use pricing to reach their goals",
     "text": "The case for considering both customers' needs and internal cost metrics.",
     "date": "07.09.2014"
   },
   {
     "id": "5",
-    "photo": "./img/main/news/5news.jpg",
+    "photo": "/img/main/news/5news.jpg",
     "title": "Growing business opportunities for healthy living",
     "text": "Consumers around the globe seek innovations for healthier lives.",
     "date": "06.23.2014"
   },
   {
     "id": "6",
-    "photo": "./img/main/news/6news.jpg",
+    "photo": "/img/main/news/6news.jpg",
     "title": "Winning shoppers in the store",
     "text": "With shoppers now making buying decisions in a few seconds, consumer goods companies need a fool-proof system for winning in stores.",
     "date": "07.25.2014"

@@ -48,33 +48,26 @@ export default {
       comments: [
         {
           author: 'Skokov',
-          time: new Date(2020, 11, 10, 14),
+          time: new Date(2020, 11, 5, 14),
           img: '/img/article/commentIcons/skokovIcon.jpg',
           text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.',
           replys: []
         },
         {
-          author: 'wernay',
-          time: new Date(2020, 11, 10, 14),
-          img: '/img/article/commentIcons/wernayIcon.jpg',
-          text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna volutpat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.',
-          replys: []
-        },
-        {
           author: 'mr. dev',
-          time: new Date(2020, 11, 10, 6),
+          time: new Date(2020, 11, 6, 1),
           img: '/img/article/commentIcons/mrDevIcon.jpg',
           text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.  Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue.',
           replys: [
             {
               author: 'wernay',
-              time: new Date(2020, 11, 10, 6),
+              time: new Date(2020, 11, 12, 1),
               img: '/img/article/commentIcons/wernayIcon.jpg',
               text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy.',
               replys: [
                 {
                   author: 'mr. dev',
-                  time: new Date(2020, 11, 10, 5),
+                  time: new Date(2020, 11, 12, 2),
                   img: '/img/article/commentIcons/mrDevIcon.jpg',
                   text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.',
                   replys: []
@@ -85,9 +78,16 @@ export default {
         },
         {
           author: 'denpro',
-          time: new Date(2020, 11, 10, 6),
+          time: new Date(2020, 11, 8, 6),
           img: '/img/article/commentIcons/denproIcon.jpg',
           text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.',
+          replys: []
+        },
+        {
+          author: 'wernay',
+          time: new Date(2020, 11, 10, 14),
+          img: '/img/article/commentIcons/wernayIcon.jpg',
+          text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna volutpat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.',
           replys: []
         }
       ]

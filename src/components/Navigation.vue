@@ -5,7 +5,7 @@
       <span class="nav-burger__middleLine"></span>
     </div>
     <ul class="nav__list" ref="navList" :class="isActive">
-      <li class="nav-list__item" :class="{ 'active': $route.name === listElem.link }" v-for="(listElem, index) in listElems" :key="index">
+      <li class="nav-list__item" :class="{ 'active': $route.name === listElem.link && listElem.link !== ' ' }" v-for="(listElem, index) in listElems" :key="index">
         <router-link
           :to="listElem.link"
           :exact="listElem.exact"
@@ -28,11 +28,11 @@ export default {
         },
         {
           name: 'services',
-          link: '/services'
+          link: ' '
         },
         {
           name: 'about us',
-          link: '/about'
+          link: ' '
         },
         {
           name: 'news',
@@ -40,22 +40,24 @@ export default {
         },
         {
           name: 'contact',
-          link: '/contact'
+          link: ' '
         }],
-      isActive: ''
+      isActive: '',
+      opened: false
     }
   },
   mounted () {
-    document.body.classList.remove('active')
+    this.scrollWidth = this.calcScrollWith()
   },
   methods: {
     activeMenu () {
-      if (this.isActive === 'active') {
-        document.body.classList.remove('active')
-      } else {
-        document.body.classList.add('active')
-      }
+      this.opened = !this.opened
       this.isActive = this.isActive === 'active' ? '' : 'active'
+    }
+  },
+  watch: {
+    opened: function () {
+      document.querySelector('body').style.overflow = this.isActive ? 'hidden' : 'auto'
     }
   }
 }

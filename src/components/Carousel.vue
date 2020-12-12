@@ -43,8 +43,6 @@ export default {
   created () {
     this.putClientsOnModules()
     window.addEventListener('resize', this.updateWidth)
-  },
-  mounted () {
     this.updateWidth()
   },
   methods: {
@@ -59,13 +57,13 @@ export default {
         transform: `translateX(${index * (-570)}px)`,
         transition: 'transform 0.4s'
       }
-      if (this.screenWidth < 710) {
+      if (this.screenWidth && this.screenWidth < 710) {
         styleObject = {
           transform: `translateX(${index * (-380)}px)`,
           transition: 'transform 0.4s'
         }
       }
-      if (this.screenWidth < 416) {
+      if (this.screenWidth && this.screenWidth < 416) {
         styleObject = {
           transform: `translateX(${index * (-290)}px)`,
           transition: 'transform 0.4s'
@@ -76,6 +74,9 @@ export default {
     updateWidth () {
       this.screenWidth = window.innerWidth
     }
+  },
+  unmounted () {
+    window.removeEventListener('resize', this.updateWidth)
   }
 }
 </script>

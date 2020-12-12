@@ -18,12 +18,24 @@ const routes = [
     name: 'Article',
     meta: { layout: 'news' },
     component: () => import('../views/NewsArticle.vue')
+  },
+  {
+    path: '/ ',
+    name: 'Addit',
+    meta: { layout: 'main' },
+    component: () => import('../views/Home.vue')
   }
 ]
 
 const router = createRouter({
-  scrollBehavior () {
-    return { x: 0, y: 0 }
+  scrollBehavior (to, from, savedPosition) {
+    if (to.hash) {
+      return {
+        selector: to.hash
+      }
+    } else {
+      return { x: 0, y: 0 }
+    }
   },
   history: createWebHistory(process.env.BASE_URL),
   routes
