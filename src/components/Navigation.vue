@@ -1,11 +1,11 @@
 <template>
   <nav class="nav__container">
-    <a href="#" class="logo nav__logo">skokov</a>
+    <router-link to="/" class="logo nav__logo">skokov</router-link>
     <div class="nav__burger" @click="activeMenu" ref="burgerButton" :class="isActive">
       <span class="nav-burger__middleLine"></span>
     </div>
     <ul class="nav__list" ref="navList" :class="isActive">
-      <li class="nav-list__item" :class="{ 'active': $route.name === listElem.link && listElem.link !== ' ' }" v-for="(listElem, index) in listElems" :key="index">
+      <li @click="activeMenu" class="nav-list__item" :class="{ 'active': $route.name === listElem.link && listElem.link !== ' ' }" v-for="(listElem, index) in listElems" :key="index">
         <router-link
           :to="listElem.link"
           :exact="listElem.exact"
@@ -47,7 +47,8 @@ export default {
     }
   },
   mounted () {
-    this.scrollWidth = this.calcScrollWith()
+    document.querySelector('body').style.overflow = 'auto'
+    this.isActive = ''
   },
   methods: {
     activeMenu () {
