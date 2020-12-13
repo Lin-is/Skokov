@@ -11,7 +11,4 @@
 - Время, прошедшее с момента добавления комментария, динамическое и подсчитывается с помощью Date()
 
  [Домашняя страница](https://lin-is.github.io/Skokov/)
- 
- [Новости](https://lin-is.github.io/Skokov/news)
- 
- [Страница с первой новостью](https://lin-is.github.io/Skokov/article/1)
+
